@@ -1,0 +1,41 @@
+<%
+  {
+    'name' 'KSPROCESSOR'
+    'since' '2.5.0'
+    'deprecated' ''
+    'deleted' ''
+    'version' 'all'
+    'tags' [ 'warpscript.extensions' ]
+    'ext' 'io.warp10.ext.kstreams.KStreamsWarpScriptExtension'
+    'desc'
+      <'
+The `KSPROCESSOR` function creates a Kafka Streams Processor node and adds it to a Kafka Streams topology.
+
+The processor node is defined using a map with the following keys:
+
+| Key | Description |
+|-----|-------------|
+| `name` | Name of the node. Must be unique within the topology. |
+| `init` | Optional macro which will be called when the `init` method of the processor is invoked. |
+| `process` | Macro which will be called for each record. The macro will be called with the record key and value as parameters. |
+| `close` | Optional macro which will be called when the `close` method of the processor is invoked. |
+| `parents` | A list of parent node names. |
+'>
+'sig' [
+      [ [ 'params:MAP' 'topology:KSTOPOLOGY' ] [ 'topology:KSTOPOLOGY' ] ]
+    ]
+    'params' {
+      'params' 'Parameter map defining the processor.'
+      'topology' 'The topology to which the processor node must be added.'
+    }
+    'related' [ 'KSSTART' 'KSTOPOLOGY' 'KSSOURCE' 'KSSINK' 'KSSCHEDULE' 'KSFORWARD' 'KSCOMMIT' 'KSAPPID' 'KSTOPIC' 'KSOFFSET' 'KSPARTITION' 'KSHEADERS' 'KSCONFIG' 'KSTIMESTAMP' ]
+    'examples' [
+    ]
+    'conf' [ ]
+  } INFO
+
+  <% 'KSPROCESSOR' EVAL %> <% %> <% %> TRY
+%>
+'macro' STORE
+// Unit tests
+$macro

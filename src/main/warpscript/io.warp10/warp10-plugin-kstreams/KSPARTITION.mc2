@@ -1,0 +1,32 @@
+<%
+  {
+    'name' 'KSPARTITION'
+    'since' '2.5.0'
+    'deprecated' ''
+    'deleted' ''
+    'version' 'all'
+    'tags' [ 'warpscript.extensions' ]
+    'ext' 'io.warp10.ext.kstreams.KStreamsWarpScriptExtension'
+    'desc'
+      <'
+The `KSPARTITION` function returns the partition of the last consumed message.
+
+This function can only be called within a processor, during the execution of the `init`, `process` or `close` macro or during the execution of a punctuation macro.
+'>
+'sig' [
+      [ [ ] [ 'partition:LONG' ] ]
+    ]
+    'params' {
+      'partition' 'Partition of the last message consumed.'
+    }
+    'related' [ 'KSPROCESSOR' 'KSAPPID' 'KSTOPIC' 'KSOFFSET' 'KSHEADERS' 'KSCONFIG' 'KSTIMESTAMP' ]
+    'examples' [
+    ]
+    'conf' [ ]
+  } INFO
+
+  <% 'KSPARTITION' EVAL %> <% %> <% %> TRY
+%>
+'macro' STORE
+// Unit tests
+$macro

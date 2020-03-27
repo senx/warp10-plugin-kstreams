@@ -1,0 +1,17 @@
+{
+  "type": "plugin",
+  "group": "io.warp10",
+  "artifact": "warp10-plugin-kstreams",
+  "version": "0.0.0",
+  "description": "Warp 10 Kafka Streams Plugin",
+  "author": "SenX",
+  "email": "contact@senx.io",
+  "license": "Apache-2.0",
+  "git": "https://github.com/senx/warp10-plugin-kstreams",
+  "repoUrl": "https://dl.bintray.com/senx/maven",
+  "tags": [
+    "Kafka",
+    "KStreams",
+    "streams"
+  ]
+}

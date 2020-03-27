@@ -1,0 +1,32 @@
+<%
+  {
+    'name' 'KSCONFIG'
+    'since' '2.5.0'
+    'deprecated' ''
+    'deleted' ''
+    'version' 'all'
+    'tags' [ 'warpscript.extensions' ]
+    'ext' 'io.warp10.ext.kstreams.KStreamsWarpScriptExtension'
+    'desc'
+      <'
+The `KSCONFIG` function returns a map containing the configuration of the topology. The keys and values are both of type `STRING` or list thereof. The passwords are removed from the configuration.
+
+This function can only be called within a processor, during the execution of the `init`, `process` or `close` macro or during the execution of a punctuation macro.
+'>
+'sig' [
+      [ [ ] [ 'config:MAP' ] ]
+    ]
+    'params' {
+      'config' 'Configuration of the topology.'
+    }
+    'related' [ 'KSPROCESSOR' 'KSAPPID' 'KSTOPIC' 'KSOFFSET' 'KSHEADERS' 'KSTIMESTAMP' 'KSPARTITION' ]
+    'examples' [
+    ]
+    'conf' [ ]
+  } INFO
+
+  <% 'KSCONFIG' EVAL %> <% %> <% %> TRY
+%>
+'macro' STORE
+// Unit tests
+$macro

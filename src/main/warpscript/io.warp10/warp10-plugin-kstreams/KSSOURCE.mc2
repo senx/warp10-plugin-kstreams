@@ -1,0 +1,60 @@
+<%
+  {
+    'name' 'KSSOURCE'
+    'since' '2.5.0'
+    'deprecated' ''
+    'deleted' ''
+    'version' 'all'
+    'tags' [ 'warpscript.extensions' ]
+    'ext' 'io.warp10.ext.kstreams.KStreamsWarpScriptExtension'
+    'desc'
+      <'
+The `KSSOURCE` function creates a Kafka Streams Source node and adds it to a Kafka Streams topology.
+
+The source node is defined using a map with the following keys:
+
+| Key | Description |
+|-----|-------------|
+| `name` | Name of the node. Must be unique within the topology. |
+| `tsextractor` | Optional macro used to extract the record timestamp. This macro will be called with a map containing the record details and is expect to return a `LONG`. If this macro is undefined, the default extractor defined in the configuration will be used. |
+| `keydeser` | Optional macro used to deserialize a record key. If unset, the default key deserializer will be used. |
+| `valuedeser` | Optional macro used to deserialize a record value. If unset, the default value deserializer will be used. |
+| `topics` | Regular expression identifying the topics the source will consume. |
+| `reset` | Optional auto offset reset policy to use if no committed offsets are found, `EARLIEST` or `LATEST`. Defaults to  `EARLIEST`. |
+
+Deserializers are called with a parameter map containing keys `topic` and `data` associated with the record topic and byte array to deserialize.
+
+The record details passed to `tsextractor` are contained in a map with the following keys:
+
+| Key | Description |
+|-----|-------------|
+| `timestamp` | The current record timestamp. |
+| `timestampType` | The type of timestamp, `NoTimestampType`, `CreateTime` or `LogAppendTime`. |
+| `topic` | Name of topic from which the record was consumed. |
+| `offset` | Offset of the record. |
+| `partition` | Partition of the record. |
+| `partitionTime` | The highest extracted valid timestamp of the current record's partition˙ (could be -1 if unknown). |
+| `key` | Record key. |
+| `value` | Record value. |
+| `headers` | Map of record headers, key is a `STRING`, value a byte array. |
+
+The `tsextractor` macro is expected to return a timestamp expressed in milliseconds since the Unix Epoch.
+      '>
+    'sig' [
+      [ [ 'params:MAP' 'topology:KSTOPOLOGY' ] [ 'topology:KSTOPOLOGY' ] ]
+    ]
+    'params' {
+      'params' 'Parameter map defining the source.'
+      'topology' 'The topology to which the source node must be added.'
+    }
+    'related' [ 'KSSTART' 'KSTOPOLOGY' 'KSSINK' 'KSPROCESSOR' ]
+    'examples' [
+    ]
+    'conf' [ ]
+  } INFO
+
+  <% 'KSSOURCE' EVAL %> <% %> <% %> TRY
+%>
+'macro' STORE
+// Unit tests
+$macro

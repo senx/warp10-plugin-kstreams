@@ -1,0 +1,40 @@
+<%
+  {
+    'name' 'KSSCHEDULE'
+    'since' '2.5.0'
+    'deprecated' ''
+    'deleted' ''
+    'version' 'all'
+    'tags' [ 'warpscript.extensions' ]
+    'ext' 'io.warp10.ext.kstreams.KStreamsWarpScriptExtension'
+    'desc'
+      <'
+The `KSSCHEDULE` function creates a new punctuation by specifying a macro which will be executed periodically.
+
+This function can only be called within a processor, during the execution of the `init`, `process` or `close` macro.
+
+The punctuation is defined by a map with the following keys:
+
+| Key | Description |
+|-----|-------------|
+| `name` | Name of the punctuation. Must be unique within a processor. |
+| `macro` | Macro that will execute periodically. The macro will be called with the timestamp as argument. If `macro` is null, `KSSCHEDULE` will remove the punctuation currently named `name`. |
+| `streamtime` | Boolean indicating whether the punctuation should be based on wall clock time (when `false`, the default), or stream time. |
+'>
+'sig' [
+      [ [ 'params:MAP' ] [ ] ]
+    ]
+    'params' {
+      'params' 'Parameter map defining the punctuation.'
+    }
+    'related' [ 'KSPROCESSOR' ]
+    'examples' [
+    ]
+    'conf' [ ]
+  } INFO
+
+  <% 'KSSCHEDULE' EVAL %> <% %> <% %> TRY
+%>
+'macro' STORE
+// Unit tests
+$macro

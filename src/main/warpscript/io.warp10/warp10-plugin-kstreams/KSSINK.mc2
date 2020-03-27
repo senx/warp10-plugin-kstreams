@@ -1,0 +1,67 @@
+<%
+  {
+    'name' 'KSSINK'
+    'since' '2.5.0'
+    'deprecated' ''
+    'deleted' ''
+    'version' 'all'
+    'tags' [ 'warpscript.extensions' ]
+    'ext' 'io.warp10.ext.kstreams.KStreamsWarpScriptExtension'
+    'desc'
+      <'
+The `KSSINK` function creates a Kafka Streams Sink node and adds it to a Kafka Streams topology.
+
+The sink node is defined using a map with the following keys:
+
+| Key | Description |
+|-----|-------------|
+| `name` | Name of the node. Must be unique within the topology. |
+| `topic` | Destination topic name or macro which will extract a topic name from a record details map. |
+| `partitioner` | Optional partitioning macro. The macro is expected to return a partition id given an input record. |
+| `keyser` | Optional macro used to serialize a record key. If unset, the default key serializer will be used. |
+| `valueser` | Optional macro used to serialize a record value. If unset, the default value serializer will be used. |
+| `parents` | A list of parent node names. |
+
+Serializers are called with a parameter map containing keys `topic` and `data` associated with the record topic and object to serialize.
+
+The record details passed to the `topic` macro` are contained in a map with the following keys:
+
+| Key | Description |
+|-----|-------------|
+| `timestamp` | The current record timestamp. |
+| `topic` | Name of topic from which the record was consumed. |
+| `offset` | Offset of the record. |
+| `partition` | Partition of the record. |
+| `key` | Record key. |
+| `value` | Record value. |
+| `headers` | Map of record headers, key is a `STRING`, value a byte array. |
+
+The `partitioner` macro is called with a map containing the following keys:
+
+| Key | Description |
+|-----|-------------|
+| `topic` | Name of topic from which the record was consumed. |
+| `numpartitions` | Number of partitions for `topic`. |
+| `key` | Record key. |
+| `value` | Record value. |
+
+The macro is expected to return a partition id between `0` and `numpartitions - 1` included.
+'>
+'sig' [
+      [ [ 'params:MAP' 'topology:KSTOPOLOGY' ] [ 'topology:KSTOPOLOGY' ] ]
+    ]
+    'params' {
+      'params' 'Parameter map defining the sink.'
+      'topology' 'The topology to which the sink node must be added.'
+    }
+    'related' [ 'KSSTART' 'KSTOPOLOGY' 'KSSOURCE' 'KSPROCESSOR' ]
+    'examples' [
+    ]
+    'conf' [ ]
+  } INFO
+
+  <% 'KSSINK' EVAL %> <% %> <% %> TRY
+%>
+'macro' STORE
+// Unit tests
+$macro

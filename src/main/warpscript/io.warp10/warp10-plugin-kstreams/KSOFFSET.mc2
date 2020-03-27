@@ -1,0 +1,32 @@
+<%
+  {
+    'name' 'KSOFFSET'
+    'since' '2.5.0'
+    'deprecated' ''
+    'deleted' ''
+    'version' 'all'
+    'tags' [ 'warpscript.extensions' ]
+    'ext' 'io.warp10.ext.kstreams.KStreamsWarpScriptExtension'
+    'desc'
+      <'
+The `KSOFFSET` function returns the offset of the last consumed message.
+
+This function can only be called within a processor, during the execution of the `init`, `process` or `close` macro or during the execution of a punctuation macro.
+'>
+'sig' [
+      [ [ ] [ 'offset:LONG' ] ]
+    ]
+    'params' {
+      'offset' 'Offset of the last message consumed.'
+    }
+    'related' [ 'KSPROCESSOR' 'KSAPPID' 'KSTOPIC' 'KSPARTITION' 'KSHEADERS' 'KSCONFIG' 'KSTIMESTAMP' ]
+    'examples' [
+    ]
+    'conf' [ ]
+  } INFO
+
+  <% 'KSOFFSET' EVAL %> <% %> <% %> TRY
+%>
+'macro' STORE
+// Unit tests
+$macro

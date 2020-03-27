@@ -1,0 +1,32 @@
+<%
+  {
+    'name' 'KSHEADERS'
+    'since' '2.5.0'
+    'deprecated' ''
+    'deleted' ''
+    'version' 'all'
+    'tags' [ 'warpscript.extensions' ]
+    'ext' 'io.warp10.ext.kstreams.KStreamsWarpScriptExtension'
+    'desc'
+      <'
+The `KSHEADERS function returns the headers of the last consumed message. The headers are returned as a map with `STRING` keys and byte array values.
+
+This function can only be called within a processor, during the execution of the `init`, `process` or `close` macro or during the execution of a punctuation macro.
+'>
+'sig' [
+      [ [ ] [ 'headers:MAP' ] ]
+    ]
+    'params' {
+      'headers' 'Headers of the last consumed message.'
+    }
+    'related' [ 'KSPROCESSOR' 'KSTOPIC' 'KSOFFSET' 'KSPARTITION' 'KSAPPID' 'KSCONFIG' 'KSTIMESTAMP' ]
+    'examples' [
+    ]
+    'conf' [ ]
+  } INFO
+
+  <% 'KSHEADERS' EVAL %> <% %> <% %> TRY
+%>
+'macro' STORE
+// Unit tests
+$macro

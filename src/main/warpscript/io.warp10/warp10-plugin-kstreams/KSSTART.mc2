@@ -1,0 +1,33 @@
+<%
+  {
+    'name' 'KSSTART'
+    'since' '2.5.0'
+    'deprecated' ''
+    'deleted' ''
+    'version' 'all'
+    'tags' [ 'warpscript.extensions' ]
+    'ext' 'io.warp10.ext.kstreams.KStreamsWarpScriptExtension'
+    'desc'
+      <'
+The `KSSTART` function launches a Kafka Streams topology.
+
+The configuration contains all the Kafka Streams definitions useful for running the topology. See the [Kafka Streams Documentation](https://docs.confluent.io/current/streams/developer-guide/config-streams.html) for details.
+'>
+'sig' [
+      [ [ 'config:MAP' 'topology:KSTOPOLOGY' ] [] ]
+    ]
+    'params' {
+      'config' 'Kafka Streams configuration to use when launching the topology.'
+      'topology' 'The topology to launch.'
+    }
+    'related' [ 'KSPROCESSOR' 'KSTOPOLOGY' 'KSSOURCE' 'KSSINK' ]
+    'examples' [
+    ]
+    'conf' [ ]
+  } INFO
+
+  <% 'KSSTART' EVAL %> <% %> <% %> TRY
+%>
+'macro' STORE
+// Unit tests
+$macro

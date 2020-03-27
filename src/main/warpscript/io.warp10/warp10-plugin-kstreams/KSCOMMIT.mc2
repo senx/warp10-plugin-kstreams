@@ -1,0 +1,31 @@
+<%
+  {
+    'name' 'KSCOMMIT'
+    'since' '2.5.0'
+    'deprecated' ''
+    'deleted' ''
+    'version' 'all'
+    'tags' [ 'warpscript.extensions' ]
+    'ext' 'io.warp10.ext.kstreams.KStreamsWarpScriptExtension'
+    'desc'
+      <'
+The `KSCOMMIT` function request a commit of offsets. The commit will happen asynchronously. This may be useful to force commit of offsets on top of the periodic commit defined by `commit.interval.ms`.
+
+This function can only be called within a processor, during the execution of the `init`, `process` or `close` macro or during the execution of a punctuation macro.
+'>
+'sig' [
+      [ [ ] [ ] ]
+    ]
+    'params' {
+    }
+    'related' [ 'KSPROCESSOR' 'KSFORWARD' ]
+    'examples' [
+    ]
+    'conf' [ ]
+  } INFO
+
+  <% 'KSCOMMIT' EVAL %> <% %> <% %> TRY
+%>
+'macro' STORE
+// Unit tests
+$macro
